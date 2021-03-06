@@ -1,0 +1,9 @@
+{
+  "name": "com.razensoft.functional",
+  "displayName": "Razensoft.Functional",
+  "version": "1.0.0",
+  "unity": "2018.4",
+  "description": "Functional extensions for C# and UniTask",
+  "license": "MIT"
+}
+

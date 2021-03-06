@@ -1,0 +1,22 @@
+{
+    "name": "Razensoft.Functional",
+    "rootNamespace": "",
+    "references": [
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "RAZENSOFT_FUNCTIONAL_UNITASK_SUPPORT"
+        }
+    ],
+    "noEngineReferences": true
+}
