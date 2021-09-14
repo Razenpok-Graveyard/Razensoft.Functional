@@ -37,6 +37,36 @@ namespace Razensoft.Functional
         /// <summary>
         ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
         /// </summary>
+        public static async Task<Result<T, E>> Ensure<T, E>(this Result<T, E> result,
+            Func<T, Task<bool>> predicate, Func<T, E> errorPredicate)
+        {
+            if (result.IsFailure)
+                return result;
+
+            if (!await predicate(result.Value).DefaultAwait())
+                return Result.Failure<T, E>(errorPredicate(result.Value));
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+        /// </summary>
+        public static async Task<Result<T, E>> Ensure<T, E>(this Result<T, E> result,
+            Func<T, Task<bool>> predicate, Func<T, Task<E>> errorPredicate)
+        {
+            if (result.IsFailure)
+                return result;
+
+            if (!await predicate(result.Value).DefaultAwait())
+                return Result.Failure<T, E>(await errorPredicate(result.Value));
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+        /// </summary>
         public static async Task<Result<T>> Ensure<T>(this Result<T> result, Func<T, Task<bool>> predicate, Func<T, string> errorPredicate)
         {
             if (result.IsFailure)

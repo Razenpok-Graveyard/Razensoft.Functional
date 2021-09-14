@@ -29,4 +29,13 @@ namespace Razensoft.Functional
             return IsSuccess ? $"Success({Value})" : $"Failure({Error})";
         }
     }
+
+
+    public partial struct UnitResult<E>
+    {
+        public override string ToString()
+        {
+            return IsSuccess ? "Success" : $"Failure({Error})";
+        }
+    }
 }

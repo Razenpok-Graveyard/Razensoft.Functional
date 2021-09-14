@@ -5,7 +5,9 @@ namespace Razensoft.Functional
     [Serializable]
     public struct Maybe<T> : IEquatable<Maybe<T>>
     {
-        private readonly MaybeValueWrapper _value;
+        private readonly bool _isValueSet;
+
+        private readonly T _value;
         public T Value
         {
             get
@@ -13,18 +15,26 @@ namespace Razensoft.Functional
                 if (HasNoValue)
                     throw new InvalidOperationException();
 
-                return _value.Value;
+                return _value;
             }
         }
 
         public static Maybe<T> None => new Maybe<T>();
 
-        public bool HasValue => _value != null;
+        public bool HasValue => _isValueSet;
         public bool HasNoValue => !HasValue;
 
         private Maybe(T value)
         {
-            _value = value == null ? null : new MaybeValueWrapper(value);
+            if (value == null)
+            {
+                _isValueSet = false;
+                _value = default;
+                return;
+            }
+
+            _isValueSet = true;
+            _value = value;
         }
 
         public static implicit operator Maybe<T>(T value)
@@ -36,6 +46,8 @@ namespace Razensoft.Functional
 
             return new Maybe<T>(value);
         }
+
+        public static implicit operator Maybe<T>(Maybe value) => None;
 
         public static Maybe<T> From(T obj)
         {
@@ -78,9 +90,9 @@ namespace Razensoft.Functional
 
             if (obj.GetType() != typeof(Maybe<T>))
             {
-                if (obj is T)
+                if (obj is T objT)
                 {
-                    obj = new Maybe<T>((T)obj);
+                    obj = new Maybe<T>(objT);
                 }
 
                 if (!(obj is Maybe<T>))
@@ -99,7 +111,7 @@ namespace Razensoft.Functional
             if (HasNoValue || other.HasNoValue)
                 return false;
 
-            return _value.Value.Equals(other._value.Value);
+            return _value.Equals(other._value);
         }
 
         public override int GetHashCode()
@@ -107,7 +119,7 @@ namespace Razensoft.Functional
             if (HasNoValue)
                 return 0;
 
-            return _value.Value.GetHashCode();
+            return _value.GetHashCode();
         }
 
         public override string ToString()
@@ -117,17 +129,18 @@ namespace Razensoft.Functional
 
             return Value.ToString();
         }
+    }
 
+    /// <summary>
+    /// Non-generic entrypoint for <see cref="Maybe{T}" /> members
+    /// </summary>
+    public struct Maybe
+    {
+        public static Maybe None => new Maybe();
 
-        [Serializable]
-        private class MaybeValueWrapper
-        {
-            public MaybeValueWrapper(T value)
-            {
-                Value = value;
-            }
-
-            internal readonly T Value;
-        }
+        /// <summary>
+        /// Creates a new <see cref="Maybe{T}" /> from the provided <paramref name="value"/>
+        /// </summary>
+        public static Maybe<T> From<T>(T value) => Maybe<T>.From(value);
     }
 }

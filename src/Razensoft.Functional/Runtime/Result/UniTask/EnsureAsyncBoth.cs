@@ -41,6 +41,38 @@ namespace Razensoft.Functional
         /// <summary>
         ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
         /// </summary>
+        public static async UniTask<Result<T, E>> Ensure<T, E>(this UniTask<Result<T, E>> resultTask, Func<T, UniTask<bool>> predicate, Func<T, E> errorPredicate)
+        {
+            Result<T, E> result = await resultTask;
+
+            if (result.IsFailure)
+                return result;
+
+            if (!await predicate(result.Value))
+                return Result.Failure<T, E>(errorPredicate(result.Value));
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+        /// </summary>
+        public static async UniTask<Result<T, E>> Ensure<T, E>(this UniTask<Result<T, E>> resultTask, Func<T, UniTask<bool>> predicate, Func<T, UniTask<E>> errorPredicate)
+        {
+            Result<T, E> result = await resultTask;
+
+            if (result.IsFailure)
+                return result;
+
+            if (!await predicate(result.Value))
+                return Result.Failure<T, E>(await errorPredicate(result.Value));
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+        /// </summary>
         public static async UniTask<Result<T>> Ensure<T>(this UniTask<Result<T>> resultUniTask, Func<T, UniTask<bool>> predicate, Func<T, string> errorPredicate)
         {
             Result<T> result = await resultUniTask;

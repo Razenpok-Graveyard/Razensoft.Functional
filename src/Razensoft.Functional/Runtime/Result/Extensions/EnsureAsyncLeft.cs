@@ -27,6 +27,16 @@ namespace Razensoft.Functional
         /// <summary>
         ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
         /// </summary>
+        public static async Task<Result<T, E>> Ensure<T, E>(this Task<Result<T, E>> resultTask,
+            Func<T, bool> predicate, Func<T, E> errorPredicate)
+        {
+            Result<T, E> result = await resultTask.DefaultAwait();
+            return result.Ensure(predicate, errorPredicate);
+        }
+
+        /// <summary>
+        ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+        /// </summary>
         public static async Task<Result<T>> Ensure<T>(this Task<Result<T>> resultTask, Func<T, bool> predicate, Func<T, string> errorPredicate)
         {
             Result<T> result = await resultTask.DefaultAwait();
@@ -34,7 +44,7 @@ namespace Razensoft.Functional
             if (result.IsFailure)
                 return result;
 
-            return result.Ensure(predicate, errorPredicate(result.Value));
+            return result.Ensure(predicate, errorPredicate);
         }
 
         /// <summary>
@@ -47,7 +57,10 @@ namespace Razensoft.Functional
             if (result.IsFailure)
                 return result;
 
-            return result.Ensure(predicate, await errorPredicate(result.Value));
+            if (predicate(result.Value))
+                return result;
+
+            return Result.Failure<T>(await errorPredicate(result.Value));
         }
 
         /// <summary>
