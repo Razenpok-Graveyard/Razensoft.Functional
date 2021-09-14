@@ -7,9 +7,9 @@ This library helps write code in more functional way. To get to know more about 
 
 Most of the code in this library is originating from the awesome [CSharpFunctionalExtensions](https://github.com/vkhorikov/CSharpFunctionalExtensions) project which you should definitely check out.
 
-Differences between **Razensoft.Functional** (1.0.0) and **CSharpFunctionalExtensions** (v2.14.5):
+Differences between **Razensoft.Functional** (1.1.0) and **CSharpFunctionalExtensions** (v2.20.0):
 
-- Removed all classes except `Result` and `Maybe`
+- Removed all classes except `Result`, `UnitResult` and `Maybe`
 - Renamed root namespace from `CSharpFunctionalExtensions` to `Razensoft.Functional`
 - Added extensions methods for `UniTask`
 
@@ -19,7 +19,7 @@ There are several ways to install this library into our project:
 
 - **Plain install**: Clone or [download](https://github.com/Razenpok/Razensoft.Functional/archive/master.zip) this repository and put it somewhere in your Unity project
 - **Unity Package Manager (UPM)**: Add the following line to *Packages/manifest.json*:
-  - `"com.razensoft.functional": "https://github.com/Razenpok/Razensoft.Functional.git?path=src/Razensoft.Functional#1.0.0",`
+  - `"com.razensoft.functional": "https://github.com/Razenpok/Razensoft.Functional.git?path=src/Razensoft.Functional#1.1.0",`
 - **[OpenUPM](https://openupm.com)**: After installing [openupm-cli](https://github.com/openupm/openupm-cli), run the following command:
   - `openupm add com.razensoft.functional`
 
