@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Razensoft.Functional
 {
     [Serializable]
-    public partial struct Result : IResult, ISerializable
+    public partial class Result : IResult, ISerializable
     {
         public bool IsFailure { get; }
         public bool IsSuccess => !IsFailure;

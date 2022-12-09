@@ -11,7 +11,7 @@ namespace Razensoft.Functional
     ///     The error type returned by a failed operation.
     /// </typeparam>
     [Serializable]
-    public partial struct UnitResult<E> : IUnitResult<E>, ISerializable
+    public partial class UnitResult<E> : IUnitResult<E>, ISerializable
     {
         public bool IsFailure { get; }
         public bool IsSuccess => !IsFailure;
