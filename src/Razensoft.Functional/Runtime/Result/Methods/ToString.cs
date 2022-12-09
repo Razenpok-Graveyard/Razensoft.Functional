@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         public override string ToString()
         {
@@ -13,7 +13,7 @@ namespace Razensoft.Functional
     }
 
 
-    public partial struct Result<T>
+    public partial class Result<T>
     {
         public override string ToString()
         {
@@ -22,7 +22,7 @@ namespace Razensoft.Functional
     }
 
 
-    public partial struct Result<T, E>
+    public partial class Result<T, E>
     {
         public override string ToString()
         {
@@ -31,7 +31,7 @@ namespace Razensoft.Functional
     }
 
 
-    public partial struct UnitResult<E>
+    public partial class UnitResult<E>
     {
         public override string ToString()
         {

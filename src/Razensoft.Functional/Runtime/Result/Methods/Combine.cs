@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Combines several results (and any error messages) into a single result.

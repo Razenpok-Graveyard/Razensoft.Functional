@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         [Obsolete("Use FailureIf() instead.")]
         public static Result CreateFailure(bool isFailure, string error)

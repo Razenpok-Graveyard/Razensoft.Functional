@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Creates a result whose success/failure reflects the supplied condition. Opposite of FailureIf().

@@ -1,6 +1,6 @@
 ﻿namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Returns the first failure from the supplied <paramref name="results"/>.

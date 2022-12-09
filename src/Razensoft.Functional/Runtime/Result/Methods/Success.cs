@@ -1,6 +1,6 @@
 ﻿namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Creates a success result.

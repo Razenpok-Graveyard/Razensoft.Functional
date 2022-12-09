@@ -1,6 +1,6 @@
 ﻿namespace Razensoft.Functional
 {
-    internal struct SerializationValue<E>
+    internal class SerializationValue<E>
     {
         public bool IsFailure { get; }
         public E Error { get; }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         [Obsolete("Use SuccessIf() instead.")]
         public static Result Create(bool isSuccess, string error)

@@ -3,7 +3,7 @@
 namespace Razensoft.Functional
 {
     [Serializable]
-    public struct Maybe<T> : IEquatable<Maybe<T>>
+    public class Maybe<T> : IEquatable<Maybe<T>>
     {
         private readonly bool _isValueSet;
 
@@ -134,7 +134,7 @@ namespace Razensoft.Functional
     /// <summary>
     /// Non-generic entrypoint for <see cref="Maybe{T}" /> members
     /// </summary>
-    public struct Maybe
+    public class Maybe
     {
         public static Maybe None => new Maybe();
 

@@ -2,7 +2,7 @@
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         [Obsolete("Use Success() instead.")]
         public static Result Ok()

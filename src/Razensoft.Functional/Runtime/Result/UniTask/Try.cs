@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Attempts to execute the supplied action. Returns a Result indicating whether the action executed successfully.

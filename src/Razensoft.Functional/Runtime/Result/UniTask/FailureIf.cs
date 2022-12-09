@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Creates a result whose success/failure depends on the supplied predicate. Opposite of SuccessIf().

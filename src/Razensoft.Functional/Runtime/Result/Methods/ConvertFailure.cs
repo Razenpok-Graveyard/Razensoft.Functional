@@ -2,7 +2,7 @@
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         /// <summary>
         ///     Throws if the result is a success. Else returns a new failure result of the given type.
@@ -16,7 +16,7 @@ namespace Razensoft.Functional
         }
     }
 
-    public partial struct Result<T>
+    public partial class Result<T>
     {
         /// <summary>
         ///     Throws if the result is a success. Else returns a new failure result.
@@ -41,7 +41,7 @@ namespace Razensoft.Functional
         }
     }
 
-    public partial struct Result<T, E>
+    public partial class Result<T, E>
     {
         /// <summary>
         ///     Throws if the result is a success. Else returns a new failure result of the given type.

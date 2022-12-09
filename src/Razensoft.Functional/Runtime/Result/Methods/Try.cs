@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Razensoft.Functional
 {
-    public partial struct Result
+    public partial class Result
     {
         private static readonly Func<Exception, string> DefaultTryErrorHandler = exc => exc.Message;
 
