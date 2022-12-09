@@ -19,7 +19,7 @@ namespace Razensoft.Functional
             }
         }
 
-        public static Maybe<T> None => new Maybe<T>();
+        public static Maybe<T> None => new Maybe<T>(default);
 
         public bool HasValue => _isValueSet;
         public bool HasNoValue => !HasValue;
