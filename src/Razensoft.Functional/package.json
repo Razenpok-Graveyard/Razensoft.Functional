@@ -4,5 +4,6 @@
   "version": "1.1.0",
   "unity": "2018.4",
   "description": "Functional extensions for Unity",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }
