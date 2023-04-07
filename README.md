@@ -1,3 +1,6 @@
+This package has been superseded by [CSharpFunctionalExtensions.UniTask](https://github.com/Razenpok/CSharpFunctionalExtensions.UniTask)
+======================================================
+
 Razensoft.Functional
 ======================================================
 
